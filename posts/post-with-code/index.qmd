@@ -1,13 +1,109 @@
 ---
-title: "Post With Code"
-author: "Harlow Malloc"
-date: "2023-03-02"
-categories: [news, code, analysis]
-image: "image.jpg"
+title: "Mapes"
+author: "eloimm"
+date: ""
+categories: [maps, code]
+image: "2012.png"
 ---
 
-This is a post with executable code.
+# Apunts per a la representació de mapes amb \`R\` amb \`tm_shape()\`
 
-```{r}
-1 + 1
-```
+En aquest post present una manera més o menys sencilla per a \*plotear\* dades en un mapa. Per a fer-ho ens centrarem en les comarques de Catalunya.
+
+És important revisar que les unitats territorials i de les dades són els mateixos donat que en els darrers anys s'han creat noves comarques (i municipis) i l'exercici no resultaria.
+
+# El Shapefile (.shp) del territori 
+
+Carreguem els poligons del shapefile (el prenem d' \[aquí\](https://vangdata.carto.com/tables/shapefiles_catalunya_comarcas/public) on no apareix el Moianès, comarca creada al 2015)
+
+\`\`\`{r eval=FALSE}
+
+library(rgdal)
+
+library(sp)
+
+poligons\<- readOGR("data/Comarques/shapefiles_catalunya_comarcas.shp",
+
+"shapefiles_catalunya_comarcas",
+
+use_iconv = TRUE, \# Sin este paramtro da errores en los accentos para el catalan
+
+encoding = "UTF-8")
+
+\`\`\`
+
+Per a visualitzar dades de l'arxiu
+
+\`\`\`{r eval=FALSE}
+
+head(poligons\@data)
+
+poligons\@data\$nom_comar
+
+\`\`\`
+
+Podem operar en ells, per exemple actualitzant la "Val d'Aran" per "Aran".
+
+\`\`\`{r eval=FALSE}
+
+library(tidyverse)
+
+poligons\@data\$nom_comar \<- as.character(poligons\@data\$nom_comar)
+
+poligons\@data\$nom_comar\[poligons\@data\$nom_comar=="Val d'Aran"\] \<- "Aran"
+
+poligons\@data\$nom_comar \<- sort(poligons\@data\$nom_comar)
+
+poligons\@data\$nom_comar \<- as.factor(poligons\@data\$nom_comar)
+
+\`\`\`
+
+## Les dades  
+
+Carreguem les dades que volem representar:
+
+\`\`\`{r eval=FALSE}
+
+load(file = "data/dades.RData")
+
+\`\`\`
+
+Creem una col·lumna en les \`dades\` que sigui comuna a la de les \`poligons\`
+
+\`\`\`{r eval=FALSE}
+
+dades\$id \<- poligons\@data\$comarca
+
+\`\`\`
+
+### 'merge()'   
+
+Ara podem juntar els objectes.
+
+\`\`\`{r eval=FALSE}
+
+mapa \<- merge(poligons, dades, by.x = "comarca", by.y= "id")
+
+\`\`\`
+
+# Dibuixar els mapes
+
+Dibuixem els mapes
+
+\`\`\`{r eval=FALSE}
+
+library(tmap)
+
+mp1 \<- tm_shape(mapa) +
+
+tm_fill("2012", \# Columna a pintar
+
+palette = "-RdYlGn")+
+
+tm_layout(frame = FALSE)
+
+mp1
+
+\`\`\`
+
+!\[\](https://github.com/eloimm/Rmaps/raw/master/images/2012.png)
