@@ -12,98 +12,77 @@ En aquest post present una manera més o menys sencilla per a \*plotear\* dades 
 
 És important revisar que les unitats territorials i de les dades són els mateixos donat que en els darrers anys s'han creat noves comarques (i municipis) i l'exercici no resultaria.
 
-# El Shapefile (.shp) del territori 
+# El Shapefile (.shp) del territori
 
 Carreguem els poligons del shapefile (el prenem d' \[aquí\](https://vangdata.carto.com/tables/shapefiles_catalunya_comarcas/public) on no apareix el Moianès, comarca creada al 2015)
 
 \`\`\`{r eval=FALSE}
 
+```{r eval=FALSE}
 library(rgdal)
-
 library(sp)
+library(tidyverse)
+library(tmap)
 
-poligons\<- readOGR("data/Comarques/shapefiles_catalunya_comarcas.shp",
-
-"shapefiles_catalunya_comarcas",
-
-use_iconv = TRUE, \# Sin este paramtro da errores en los accentos para el catalan
-
-encoding = "UTF-8")
-
-\`\`\`
+poligons<- readOGR("data/Comarques/shapefiles_catalunya_comarcas.shp",
+                   "shapefiles_catalunya_comarcas",
+                   use_iconv = TRUE, # Sense aquest paràmetre dona errors en els accents per al català
+                   encoding = "UTF-8")
+```
 
 Per a visualitzar dades de l'arxiu
 
-\`\`\`{r eval=FALSE}
+```{r eval=FALSE}
+head(poligons@data)
 
-head(poligons\@data)
+poligons@data$nom_comar
+```
 
-poligons\@data\$nom_comar
+Podem operar-hi, per exemple actualitzant la "Val d'Aran" per "Aran".
 
-\`\`\`
+```{r eval=FALSE}
+poligons@data$nom_comar <- as.character(poligons@data$nom_comar)
 
-Podem operar en ells, per exemple actualitzant la "Val d'Aran" per "Aran".
+poligons@data$nom_comar[poligons@data$nom_comar=="Val d'Aran"] <- "Aran"
 
-\`\`\`{r eval=FALSE}
+poligons@data$nom_comar <- sort(poligons@data$nom_comar)
 
-library(tidyverse)
+poligons@data$nom_comar <- as.factor(poligons@data$nom_comar)
+```
 
-poligons\@data\$nom_comar \<- as.character(poligons\@data\$nom_comar)
-
-poligons\@data\$nom_comar\[poligons\@data\$nom_comar=="Val d'Aran"\] \<- "Aran"
-
-poligons\@data\$nom_comar \<- sort(poligons\@data\$nom_comar)
-
-poligons\@data\$nom_comar \<- as.factor(poligons\@data\$nom_comar)
-
-\`\`\`
-
-## Les dades  
+## Les dades
 
 Carreguem les dades que volem representar:
 
-\`\`\`{r eval=FALSE}
-
+```{r eval=FALSE}
 load(file = "data/dades.RData")
-
-\`\`\`
+```
 
 Creem una col·lumna en les \`dades\` que sigui comuna a la de les \`poligons\`
 
-\`\`\`{r eval=FALSE}
+```{r}
+dades$id <- poligons@data$comarca
+```
 
-dades\$id \<- poligons\@data\$comarca
-
-\`\`\`
-
-### 'merge()'   
+### 'merge()'
 
 Ara podem juntar els objectes.
 
-\`\`\`{r eval=FALSE}
-
-mapa \<- merge(poligons, dades, by.x = "comarca", by.y= "id")
-
-\`\`\`
+```{r eval=FALSE}
+mapa <- merge(poligons, dades, by.x = "comarca", by.y= "id")
+```
 
 # Dibuixar els mapes
 
 Dibuixem els mapes
 
-\`\`\`{r eval=FALSE}
-
-library(tmap)
-
-mp1 \<- tm_shape(mapa) +
-
-tm_fill("2012", \# Columna a pintar
-
-palette = "-RdYlGn")+
-
-tm_layout(frame = FALSE)
+```{r}
+mp1 <- tm_shape(mapa) + 
+  tm_fill("2012", # Columna a pintar
+          palette = "-RdYlGn")+
+  tm_layout(frame = FALSE)
 
 mp1
+```
 
-\`\`\`
-
-!\[\](https://github.com/eloimm/Rmaps/raw/master/images/2012.png)
+![](2012.png)
