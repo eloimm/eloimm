@@ -7,6 +7,13 @@
     "text": "En aquest post present una manera més o menys sencilla per a *plotear* dades en un mapa. Per a fer-ho ens centrarem en les comarques de Catalunya.\nÉs important revisar que les unitats territorials i de les dades són els mateixos donat que en els darrers anys s’han creat noves comarques (i municipis) i l’exercici no resultaria."
   },
   {
+    "objectID": "posts/post-with-code/index.html#les-dades",
+    "href": "posts/post-with-code/index.html#les-dades",
+    "title": "Mapes",
+    "section": "Les dades",
+    "text": "Les dades\nCarreguem les dades que volem representar:\n\nload(file = \"data/dades.RData\")\n\nCreem una col·lumna en les `dades` que sigui comuna a la de les `poligons`\n\n dades$id <- poligons@data$comarca\n\n\n‘merge()’\nAra podem juntar els objectes.\n\nmapa <- merge(poligons, dades, by.x = \"comarca\", by.y= \"id\")"
+  },
+  {
     "objectID": "posts/welcome/index.html",
     "href": "posts/welcome/index.html",
     "title": "Welcome To My Blog",
@@ -14,24 +21,17 @@
     "text": "This is the first post in a Quarto blog. Welcome!\n\nSince this post doesn’t specify an explicit image, the first image in the post will be used in the listing page of posts."
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this blog"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
+    "objectID": "blog.html",
+    "href": "blog.html",
     "title": "eloimm",
     "section": "",
     "text": "Mapes\n\n\n\n\n\n\n\nmaps\n\n\ncode\n\n\n\n\n\n\n\n\n\n\n\neloimm\n\n\n\n\n\n\n  \n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\nnews\n\n\n\n\n\n\n\n\n\n\n\nFeb 27, 2023\n\n\nTristan O’Malley\n\n\n\n\n\n\nNo matching items"
   },
   {
-    "objectID": "posts/post-with-code/index.html#les-dades",
-    "href": "posts/post-with-code/index.html#les-dades",
-    "title": "Mapes",
-    "section": "Les dades",
-    "text": "Les dades\nCarreguem les dades que volem representar:\n\nload(file = \"data/dades.RData\")\n\nCreem una col·lumna en les `dades` que sigui comuna a la de les `poligons`\n\n dades$id <- poligons@data$comarca\n\n\n‘merge()’\nAra podem juntar els objectes.\n\nmapa <- merge(poligons, dades, by.x = \"comarca\", by.y= \"id\")"
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Eloi Mayordomo",
+    "section": "",
+    "text": "About this blog"
   }
 ]
