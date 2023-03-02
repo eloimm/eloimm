@@ -16,8 +16,6 @@ En aquest post present una manera més o menys sencilla per a \*plotear\* dades 
 
 Carreguem els poligons del shapefile (el prenem d' \[aquí\](https://vangdata.carto.com/tables/shapefiles_catalunya_comarcas/public) on no apareix el Moianès, comarca creada al 2015)
 
-\`\`\`{r eval=FALSE}
-
 ```{r eval=FALSE}
 library(rgdal)
 library(sp)
@@ -60,8 +58,8 @@ load(file = "data/dades.RData")
 
 Creem una col·lumna en les \`dades\` que sigui comuna a la de les \`poligons\`
 
-```{r}
-dades$id <- poligons@data$comarca
+```{r eval=FALSE}
+ dades$id <- poligons@data$comarca
 ```
 
 ### 'merge()'
@@ -76,7 +74,7 @@ mapa <- merge(poligons, dades, by.x = "comarca", by.y= "id")
 
 Dibuixem els mapes
 
-```{r}
+```{r eval=FALSE}
 mp1 <- tm_shape(mapa) + 
   tm_fill("2012", # Columna a pintar
           palette = "-RdYlGn")+
