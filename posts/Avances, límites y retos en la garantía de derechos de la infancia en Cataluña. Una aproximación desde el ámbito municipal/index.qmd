@@ -3,7 +3,7 @@ title: "Avances, límites y retos en la garantía de derechos de la infancia en 
 author: 
   - "Eloi Mayordomo"
   - "Xavier Millan"
-date: "May 2017"
+date: "Maig 2017"
 categories: [Infància, Catalunya, Serveis Socials]
 image: "Zerbitzuan.png"
 ---
