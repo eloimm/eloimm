@@ -1,86 +1,36 @@
 ---
-title: "Mapes"
-author: "eloimm"
-date: ""
-categories: [maps, code]
-image: "2012.png"
+title: "Polítiques per a la infància vulnerable des del mon local"
+author: 
+- "Mikel Gurbindo"
+- "Alba Castejón"
+- "Eloi Mayordomo"
+date: "12/12/2017"
+categories: [Infància, Serveis socials, Municipalisme]
+image: "politiques.png"
 ---
 
-# Apunts per a la representació de mapes amb \`R\` amb \`tm_shape()\`
+La inversió en la primerenca infància és un camp d\'intervenció de política pública cada cop més important. En un context d\'augment de les desigualtats econòmiques i la segregació social i de canvis profunds en els sistemes productius i de formes de vida, els estats de benestar s\'enfronten a la necessitat de reformes profundes que posin l\'èmfasi en la capacitació individual, la igualtat d\'oportunitats i la transversalitat. Les polítiques d\'atenció a la infància vulnerable estan en l\'eix d\'aquesta nova filosofia de la inversió social.
 
-En aquest post present una manera més o menys sencilla per a \*plotear\* dades en un mapa. Per a fer-ho ens centrarem en les comarques de Catalunya.
+En aquesta sessió tractarem aquest àmbit de polítiques amb el focus posat en els serveis de l\'àmbit municipal i autonòmic. Reflexionarem sobre casos de bones pràctiques que puguin ser extrapolables i sobre allò que pugui aportar al disseny de polítiques destinades a la infància i les famílies en diferents nivells de govern.
 
-És important revisar que les unitats territorials i de les dades són els mateixos donat que en els darrers anys s'han creat noves comarques (i municipis) i l'exercici no resultaria.
+Participants:
 
-# El Shapefile (.shp) del territori
+-   **Mikel Gurbindo** (Responsable de la Subdirecció de Família i Menors del Govern de Navarra). \"Model i senyes d\'identitat del II Pla Integral de Suport a la Família, la Infància i l\'Adolescència a Navarra 2017-2023\".
 
-Carreguem els poligons del shapefile (el prenem d' \[aquí\](https://vangdata.carto.com/tables/shapefiles_catalunya_comarcas/public) on no apareix el Moianès, comarca creada al 2015)
+-   **Alba Castejón** (Departament de Pedagogia Sistemàtica i Social de la UAB). \"Desigualtat i escola\".
 
-```{r eval=FALSE}
-library(rgdal)
-library(sp)
-library(tidyverse)
-library(tmap)
+-   **Eloi Mayordomo** (Tècnic de polítiques socials especialista en Infància). \"Polítiques per a la infància vulnerable des del món local\".
 
-poligons<- readOGR("data/Comarques/shapefiles_catalunya_comarcas.shp",
-                   "shapefiles_catalunya_comarcas",
-                   use_iconv = TRUE, # Sense aquest paràmetre dona errors en els accents per al català
-                   encoding = "UTF-8")
-```
+MATERIALS DE LA SESSIÓ:
 
-Per a visualitzar dades de l'arxiu
+-   **Alba Castejón**: \"[Desigualdad y Escuela. Infancia vulnerable y oportunidades educativas](https://igop.uab.cat/wp-content/uploads/2017/12/ALBA-CASTEJON-S17LAB-IGOP.pdf "Presentación Alba Castejón S17 LAB IGOP")\"
 
-```{r eval=FALSE}
-head(poligons@data)
+-   **Mikel Gurbindo**: \"[Modelo y señas de identidad del II Plan Integral de Apoyo a la Familia, la Infancia y la Adolescencia en Navarra 2017-2023](https://igop.uab.cat/wp-content/uploads/2017/12/MIKEL-GURBINDO-S17LAB-IGOP.pdf "Presentación Mikel Gurbindo S17. LAB IGÔP")\"
 
-poligons@data$nom_comar
-```
+-   **Eloi Mayordomo**: \"[Polítiques per a la infància vulnerable des del món local](https://igop.uab.cat/wp-content/uploads/2017/12/ELOI-MAYORDOMO-S17LAB-IGOP.pdf "Presentación Eloi Mayordomo S17 LAB IGOP")\"
 
-Podem operar-hi, per exemple actualitzant la "Val d'Aran" per "Aran".
+Vídeo de la sessió
 
-```{r eval=FALSE}
-poligons@data$nom_comar <- as.character(poligons@data$nom_comar)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/CtghLs75c6U" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen>
 
-poligons@data$nom_comar[poligons@data$nom_comar=="Val d'Aran"] <- "Aran"
-
-poligons@data$nom_comar <- sort(poligons@data$nom_comar)
-
-poligons@data$nom_comar <- as.factor(poligons@data$nom_comar)
-```
-
-## Les dades
-
-Carreguem les dades que volem representar:
-
-```{r eval=FALSE}
-load(file = "data/dades.RData")
-```
-
-Creem una col·lumna en les \`dades\` que sigui comuna a la de les \`poligons\`
-
-```{r eval=FALSE}
- dades$id <- poligons@data$comarca
-```
-
-### 'merge()'
-
-Ara podem juntar els objectes.
-
-```{r eval=FALSE}
-mapa <- merge(poligons, dades, by.x = "comarca", by.y= "id")
-```
-
-# Dibuixar els mapes
-
-Dibuixem els mapes
-
-```{r eval=FALSE}
-mp1 <- tm_shape(mapa) + 
-  tm_fill("2012", # Columna a pintar
-          palette = "-RdYlGn")+
-  tm_layout(frame = FALSE)
-
-mp1
-```
-
-![](2012.png)
+</iframe>
