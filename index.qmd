@@ -4,6 +4,9 @@ image: profile.jpg
 about:
   template: jolla
   links:
+    - icon: pc-display-horizontal
+      text: Bloc
+      href: https://eloimm.github.io
     - icon: linkedin
       text: LinkedIn
       href: https://linkedin.com/in/eloimm
