@@ -6,8 +6,8 @@ website:
   title: "eloimm"
   navbar:
     right:
-      - text: BLOC
-        href: blog.qmd 
+      - text: Sobre el bloc
+        href: about.qmd 
       - icon: github
         href: https://github.com/eloimm
       - icon: twitter

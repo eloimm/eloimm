@@ -6,7 +6,7 @@ about:
   links:
     - icon: pc-display-horizontal
       text: Bloc
-      href: https://eloimm.github.io/blog.html
+      href: https://eloimm.github.io/
     - icon: linkedin
       text: LinkedIn
       href: https://linkedin.com/in/eloimm
