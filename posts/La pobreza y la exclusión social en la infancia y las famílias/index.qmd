@@ -1,0 +1,17 @@
+---
+title: "La pobreza y la exclusión social en la infancia y las famílias"
+author: 
+  - "Eloi Mayordomo"
+date: "18/07/18"
+categories: [Infància, Catalunya, Serveis socials, Presentació]
+image: "La pobreza.png"
+---
+
+# La pobreza y la exclusión social en la infancia y las famílias
+
+Presentació en el marc del curs [Desigualdad, pobreza y exclusión social](http://www.juliols.ub.edu/curso-verano/desigualdad-pobreza-exclusion-social) dels juliols de la UB.   
+
+
+<iframe width="560" height="315" src="https://eloimm.github.io/UB/#1" title="La pobreza y la exclusión social en la infancia y las famílias" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>  
+
+[Accedir a la presentació](https://eloimm.github.io/UB/#1)
