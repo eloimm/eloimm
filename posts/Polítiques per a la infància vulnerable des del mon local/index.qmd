@@ -5,7 +5,7 @@ author:
 - "Alba Castejón"
 - "Eloi Mayordomo"
 date: "12/12/2017"
-categories: [Infància, Serveis socials, Municipalisme]
+categories: [Infància, Serveis socials, Municipalisme, Presentació]
 image: "politiques.png"
 ---
 

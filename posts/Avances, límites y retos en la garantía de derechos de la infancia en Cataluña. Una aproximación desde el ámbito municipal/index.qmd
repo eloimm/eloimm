@@ -4,7 +4,7 @@ author:
   - "Eloi Mayordomo"
   - "Xavier Millan"
 date: "May 2017"
-categories: [Infància, Catalunya, Serveis socials]
+categories: [Infància, Catalunya, Serveis socials, Article]
 image: "Zerbitzuan.png"
 ---
 

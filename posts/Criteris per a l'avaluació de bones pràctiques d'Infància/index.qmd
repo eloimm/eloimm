@@ -3,7 +3,7 @@ title: "Criteris per a l'avaluació de bones pràctiques d'infància"
 author: 
   - "Eloi Mayordomo"
 date: "Juliol 2018"
-categories: [Infància, Catalunya, Municipalisme]
+categories: [Infància, Catalunya, Municipalisme, Article]
 image: "criteris.png"
 ---
 
