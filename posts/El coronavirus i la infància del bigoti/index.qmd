@@ -7,8 +7,6 @@ categories: [Infància, Catalunya, Serveis socials, coronavirus, Article]
 image: "corona.png"
 ---
 
-# El coronavirus i la infància del bigoti
-
 El Departament d'Educació, seguint instruccions del Departament de Salut i com a mesura excepcional per contenir el coronavirus, tancava amb caràcter excepcional els centres educatius del país. Aquesta mesura, amb un fort impacte social, i a la que posteriorment s'hi sumaria el confinament i la declaració d'Estat d'Alarma, posava de manifest la dificultat dels poders públics per garantir l'alimentació dels infants d'aquelles famílies en situacions de vulnerabilitat econòmica. Com cada període vacacional, el tancament dels centres educatius suposa la finalització del suport a l'alimentació, ja que aquest suport es dona a través de beques menjador. Quan tanquen els centres el dret a l'alimentació dels infants queda en suspens.
 
 [Segueix llegint](https://lleiengel.cat/coronavirus-infancia-bigoti/)

@@ -7,8 +7,6 @@ categories: [Infància, Catalunya, Serveis socials, coronavirus, Article]
 image: "marge.png"
 ---
 
-# La infància: del marge al confinament
-
-La crisi de la Covid-19 visualitza la posició que atorguem a la infància i les seves polítiques. Si fins ara les polítiques d’infància es caracteritzaven per estar subdesenvolupades i atomitzades, els efectes del confinament exigiran més integració funcional del conjunt dels sistemes i un impuls decidit per revertir aquesta situació. 
+La crisi de la Covid-19 visualitza la posició que atorguem a la infància i les seves polítiques. Si fins ara les polítiques d'infància es caracteritzaven per estar subdesenvolupades i atomitzades, els efectes del confinament exigiran més integració funcional del conjunt dels sistemes i un impuls decidit per revertir aquesta situació.
 
 [Segueix llegint](https://ajuntament.barcelona.cat/dretssocials/sites/default/files/revista/05_op_mayordomo_bcn26.pdf)
